@@ -155,3 +155,146 @@ console.log(panagram.sort(function (a, b) {
 console.log(panagram.sort(function (a, b) {
     return b.toLowerCase().localeCompare(a.toLowerCase());
 })) // compare function from  https://stackoverflow.com/questions/8996963/how-to-perform-case-insensitive-sorting-in-javascript
+
+// ### Array Methods Challenge Problems
+
+// #### isPanagram
+
+// Using the following array - test whether each letter a-z (case insensitive) is used at least once
+
+
+const panagram = ['The', 'quick','brown','fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']  //I'm assuming there's a better way to access all the letters of the alphabet, but I couldn't figure out how to get what I wanted. Did some reading on regular expressions, but it didn't seem like that without digging into how to use them more.
+
+
+const isPanagram = () => {
+  let newArr = []
+  let str = panagram.toString()
+  for (let i=0; i<str.length; i++) {
+    for (let j=0; j<letters.length; j++){
+        if (str[i].includes(letters[j])) {
+          newArr.push(letters[j])
+      }
+    }
+  }
+   let sortedArr = (newArr.filter((elem, index) => {
+    return newArr.indexOf(elem) === index // removed duplicate characters based on code form https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
+}).sort())
+ if (letters.toString() === sortedArr.toString()) {
+   console.log("Each letter is used")
+ }
+}
+isPanagram()
+
+
+// #### Working with data
+
+const products = [
+    {
+      "name": "allen wrench",
+      "price": 2.99,
+      "description": "handy tool"
+    },
+    {
+      "name": "cornucopia",
+      "price": 5.99,
+      "description": "festive holiday decoration"
+    },
+    {
+      "name": "banana",
+      "price": 0.99,
+      "description": "full of potassium"
+    },
+    {
+      "name": "guillotine (cigar)",
+      "price": 10.59,
+      "description": "behead your stub"
+    },
+    {
+      "name": "jack-o-lantern",
+      "price": 3.99,
+      "description": "spooky seasonal fun"
+    },
+    {
+      "name": "doggie treat (box)",
+      "price": 5.99,
+      "description": "fido loves 'em"
+    },
+    {
+      "name": "egg separator",
+      "price": 3.99,
+      "description": "it separates yolks from whites"
+    },
+    {
+      "name": "LED lightbulb",
+      "price": 6.55,
+      "description": "It's super-efficient!"
+    },
+    {
+      "name": "owl pellets",
+      "price": 3.99,
+      "description": "Don't ask what they used to be."
+    },
+    {
+      "name": "flag",
+      "price": 5.99,
+      "description": "catches the breeze"
+    },
+    {
+      "name": "hair brush",
+      "price": 6.99,
+      "description": "fine boar bristles"
+    },
+    {
+      "name": "iridium (one gram)",
+      "price": 19.36,
+      "description": "corrosion-resistant metal"
+    },
+    {
+      "name": "quark",
+      "price": 0.01,
+      "description": "Very small"
+    },
+    {
+      "name": "turtleneck",
+      "price": 19.99,
+      "description": "available in black and slightly-darker black"
+    },
+    {
+      "name": "kaleidoscope",
+      "price": 8.25,
+      "description": "tube with moving plastic pieces inside"
+    },
+    {
+      "name": "mitt (leather)",
+      "price": 15,
+      "description": "regulation sized"
+    },
+    {
+      "name": "nothing",
+      "price": 10,
+      "description": "Hey, if you pay us, we won't ask any questions."
+    },
+    {
+      "name": "violin",
+      "price": 2000,
+      "description": "Talk about a JS fiddle..."
+    },
+    {
+      "name": "yoyo",
+      "price": 1,
+      "description": "We had to pull some strings to get this one in."
+    },
+    {
+      "name": "pincushion",
+      "price": 1.99,
+      "description": "You'll get 'stuck' on it"
+    },
+  ]
+
+  // - filter for products with a price that is less than 10, using the array above:
+  const deals = products.filter(prod => prod.price < 10)
+  console.log(deals)
+// // - sort alphabetically by product name
+console.log(deals.sort((a,b) => a.name.toUpperCase.length - b.name.toUpperCase.length)) 
+//can't quite figure how to get this to sort correctly. Tried accessing name in the sort method with dot notation, but didn't seem to affect anything.
